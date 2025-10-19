@@ -1,0 +1,65 @@
+{
+  "name": "Review",
+  "type": "object",
+  "properties": {
+    "company_name": {
+      "type": "string",
+      "description": "Name of the company leaving the review"
+    },
+    "contact_person": {
+      "type": "string",
+      "description": "Name of the person submitting the review"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number"
+    },
+    "service_type": {
+      "type": "string",
+      "enum": [
+        "freight_transport",
+        "warehousing",
+        "supply_chain",
+        "international_shipping",
+        "last_mile_delivery",
+        "customs_clearance"
+      ],
+      "description": "Type of service used"
+    },
+    "rating": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Rating from 1 to 5 stars"
+    },
+    "review_text": {
+      "type": "string",
+      "description": "Detailed review text"
+    },
+    "would_recommend": {
+      "type": "boolean",
+      "description": "Would recommend to others"
+    }
+  },
+  "required": [
+    "company_name",
+    "contact_person",
+    "email",
+    "service_type",
+    "rating",
+    "review_text"
+  ],
+  "rls": {
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "write": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}
