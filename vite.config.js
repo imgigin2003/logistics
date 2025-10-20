@@ -13,4 +13,5 @@ export default defineConfig({
     postcss: "./postcss.config.js",
   },
   assetsInclude: ["**/*.jpg", "**/*.png"],
+  base: "/logistics/",
 });
