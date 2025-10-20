@@ -1,30 +1,34 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState } from "react";
 import { createPageUrl } from "@/utils";
-import { Phone, MapPin, Truck, Clock } from "lucide-react"; // Mail حذف شد زیرا در فوتر استفاده نمی‌شد
+import { Phone, MapPin, Truck, Clock, Menu, X } from "lucide-react";
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isHomePage = location.pathname === createPageUrl("Home");
   const footerBg = `${import.meta.env.BASE_URL}assets/images/footer-bg.jpg`;
 
   const handleNavClick = (e, sectionId) => {
     e.preventDefault();
+    setIsMobileMenuOpen(false);
     if (!isHomePage) {
       window.location.href = createPageUrl("Home") + sectionId;
     } else {
       const element = document.querySelector(sectionId);
       if (element) {
-        const offset = 80; // ارتفاع هدر ثابت را جبران می‌کند
+        const offset = 80;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset;
-
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth",
         });
       }
     }
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -59,30 +63,31 @@ export default function Layout({ children, currentPageName }) {
               </span>
             </Link>
 
+            {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
               <a
-                href__="#about"
+                href="#about"
                 onClick={(e) => handleNavClick(e, "#about")}
                 className="text-gray-700 hover:text-emerald-600 font-medium transition-colors cursor-pointer"
               >
                 درباره ما
               </a>
               <a
-                href__="#services"
+                href="#services"
                 onClick={(e) => handleNavClick(e, "#services")}
                 className="text-gray-700 hover:text-emerald-600 font-medium transition-colors cursor-pointer"
               >
                 خدمات
               </a>
               <a
-                href__="#testimonials"
+                href="#testimonials"
                 onClick={(e) => handleNavClick(e, "#testimonials")}
                 className="text-gray-700 hover:text-emerald-600 font-medium transition-colors cursor-pointer"
               >
                 نظرات مشتریان
               </a>
               <a
-                href__="#contact"
+                href="#contact"
                 onClick={(e) => handleNavClick(e, "#contact")}
                 className="text-gray-700 hover:text-emerald-600 font-medium transition-colors cursor-pointer"
               >
@@ -97,32 +102,79 @@ export default function Layout({ children, currentPageName }) {
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <Link
-                to={createPageUrl("Review")}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all duration-300"
+            <div className="md:hidden flex items-center gap-4">
+              <button
+                onClick={toggleMobileMenu}
+                className="text-gray-700 hover:text-emerald-600 p-2"
+                aria-label="Toggle menu"
               >
-                ثبت نظر
-              </Link>
+                {isMobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
             </div>
           </div>
         </div>
+
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-200 z-40">
+            <div className="px-6 py-4 space-y-4">
+              <a
+                href="#about"
+                onClick={(e) => handleNavClick(e, "#about")}
+                className="block text-gray-700 hover:text-emerald-600 font-medium py-2 border-b border-gray-100"
+              >
+                درباره ما
+              </a>
+              <a
+                href="#services"
+                onClick={(e) => handleNavClick(e, "#services")}
+                className="block text-gray-700 hover:text-emerald-600 font-medium py-2 border-b border-gray-100"
+              >
+                خدمات
+              </a>
+              <a
+                href="#testimonials"
+                onClick={(e) => handleNavClick(e, "#testimonials")}
+                className="block text-gray-700 hover:text-emerald-600 font-medium py-2 border-b border-gray-100"
+              >
+                نظرات مشتریان
+              </a>
+              <a
+                href="#contact"
+                onClick={(e) => handleNavClick(e, "#contact")}
+                className="block text-gray-700 hover:text-emerald-600 font-medium py-2 border-b border-gray-100"
+              >
+                تماس با ما
+              </a>
+              <Link
+                to={createPageUrl("Review")}
+                className="block bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-full font-medium text-center transition-all duration-300"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                ثبت بازخورد
+              </Link>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Main Content */}
       <main className="pt-20">{children}</main>
 
-      {/* Footer */}
+      {/* Footer - بدون تغییر، اما اگر مشکلی داشت، بگو */}
       <footer className="relative bg-emerald-900 text-white py-16 overflow-hidden">
-        {" "}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url(${footerBg})`,
-            transform: `translateY(${scrollY * 0.5}px)`,
+            transform: `translateY(${window.scrollY * 0.5}px)`, // scrollY رو به window.scrollY تغییر دادم (در کد اصلی scrollY تعریف نشده بود)
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/90 via-emerald-800/80 to-emerald-700/70"></div>{" "}
+          <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/90 via-emerald-800/80 to-emerald-700/70"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8">
@@ -141,7 +193,6 @@ export default function Layout({ children, currentPageName }) {
               <p className="text-emerald-200 leading-relaxed mb-6">
                 مدیرعامل و سهام‌دار: رامین پارسه
               </p>
-
               <p className="text-emerald-200 leading-relaxed mb-6">
                 شریک مطمئن شما در حمل و نقل. ما راه‌حل‌هایی ارائه می‌دهیم که
                 کسب‌وکار شما را با قابلیت اطمینان، کارایی و پایداری به جلو
