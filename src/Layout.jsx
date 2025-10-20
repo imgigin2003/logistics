@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createPageUrl } from "@/utils";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Phone, MapPin, Truck, Clock, Menu, X } from "lucide-react";
 
 export default function Layout({ children, currentPageName }) {
