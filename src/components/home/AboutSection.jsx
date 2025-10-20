@@ -94,7 +94,7 @@ export default function AboutSection() {
             <div className="relative">
               <div className="relative z-10">
                 <img
-                  src="/assets/images/truck.jpg"
+                  src={`${import.meta.env.BASE_URL}assets/images/truck.jpg`}
                   alt="تصویر یک کانتینر حمل بار"
                   className="rounded-2xl shadow-2xl"
                 />

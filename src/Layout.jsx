@@ -6,6 +6,7 @@ import { Phone, MapPin, Truck, Clock } from "lucide-react"; // Mail حذف شد 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
   const isHomePage = location.pathname === createPageUrl("Home");
+  const footerBg = `${import.meta.env.BASE_URL}assets/images/footer-bg.jpg`;
 
   const handleNavClick = (e, sectionId) => {
     e.preventDefault();
@@ -91,7 +92,7 @@ export default function Layout({ children, currentPageName }) {
                 to={createPageUrl("Review")}
                 className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                ثبت نظر
+                ثبت بازخورد
               </Link>
             </div>
 
@@ -117,7 +118,7 @@ export default function Layout({ children, currentPageName }) {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/assets/images/footer-bg.jpg')",
+            backgroundImage: `url(${footerBg})`,
             transform: `translateY(${scrollY * 0.5}px)`,
           }}
         >

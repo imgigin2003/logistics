@@ -37,7 +37,7 @@ export default function InteractiveMap() {
     <div className="h-full w-full rounded-2xl overflow-hidden">
       <MapContainer
         center={location}
-        zoom={13}
+        zoom={15}
         scrollWheelZoom={true}
         style={{ height: "100%", width: "100%" }}
         className="rounded-2xl"

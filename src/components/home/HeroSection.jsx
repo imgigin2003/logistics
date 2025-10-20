@@ -5,6 +5,7 @@ import AnimatedSection from "./AnimatedSection";
 
 export default function HeroSection() {
   const [scrollY, setScrollY] = useState(0);
+  const heroBg = `${import.meta.env.BASE_URL}assets/images/hero-bg.jpg`;
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -18,7 +19,7 @@ export default function HeroSection() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/assets/images/hero-bg.jpg')",
+          backgroundImage: `url(${heroBg})`,
           transform: `translateY(${scrollY * 0.5}px)`,
         }}
       >
