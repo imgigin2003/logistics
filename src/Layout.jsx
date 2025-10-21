@@ -248,6 +248,10 @@ export default function Layout({ children, currentPageName }) {
           <div className="copy-right border-t border-emerald-800 mt-12 pt-8 text-center text-white-300">
             <p>© ۱۴۰۳ باربری نیلگون خلیج فارس. تمامی حقوق محفوظ است.</p>
           </div>
+
+          <div className="border-t border-emerald-800 mt-12 pt-8 text-center text-white-200">
+            <p>Designed with ♡ by Negin Parseh</p>
+          </div>
         </div>
       </footer>
     </div>

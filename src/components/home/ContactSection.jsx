@@ -101,14 +101,16 @@ export default function ContactSection() {
                       </h4>
                       <div className="space-y-1 mb-2">
                         {info.details.map((detail, idx) => {
-                          const cleanedNumber = detail
-                            .replace(/[^\d]/g, "")
-                            .replace(/^0/, "+98");
+                          const cleanedNumber = detail.replace(/[^\d]/g, "");
+
+                          const localNumber = cleanedNumber.startsWith("98")
+                            ? "0" + cleanedNumber.slice(2)
+                            : cleanedNumber;
 
                           return (
                             <a
                               key={idx}
-                              href={`tel:${cleanedNumber}`}
+                              href={`tel:${localNumber}`}
                               className="block text-gray-600 text-sm hover:text-emerald-600 transition-colors"
                               dir="ltr"
                             >
