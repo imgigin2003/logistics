@@ -5,7 +5,7 @@ import AnimatedSection from "./AnimatedSection";
 
 export default function HeroSection() {
   const [scrollY, setScrollY] = useState(0);
-  const heroBg = `${import.meta.env.BASE_URL}assets/images/hero-bg.jpg`;
+  const heroBg = `${import.meta.env.BASE_URL}assets/images/hero-bg.webp`;
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -14,7 +14,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative h-screen overflow-hidden" role="banner">
       {/* Parallax Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -23,6 +23,12 @@ export default function HeroSection() {
           transform: `translateY(${scrollY * 0.5}px)`,
         }}
       >
+        <img
+          src={heroBg}
+          alt="باربری نیلگون لجستیک کرمانشاه - حمل‌ونقل بین‌شهری و درون‌شهری"
+          className="hidden"
+          loading="lazy"
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 via-emerald-800/70 to-emerald-700/60"></div>
       </div>
 
@@ -40,23 +46,28 @@ export default function HeroSection() {
               </div>
 
               <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
-                باربری نیلگون
-                <span className="block text-emerald-300">خلیج فارس</span>
+                باربری در کرمانشاه با
+                <span className="block text-emerald-300">نیلگون خلیج‌فارس</span>
                 <span className="block text-white text-4xl md:text-5xl mt-2">
                   (مؤسسه اصفهان سابق)
                 </span>
               </h1>
 
               <p className="text-xl text-emerald-100 leading-relaxed mb-8 max-w-2xl">
-                حمل کلیه بارهای تجاری، ماشین‌آلات و بارهای ترافیکی، محصولات
-                کشاورزی، سیمان، محصولات پتروشیمی و سایر محموله‌ها با بالاترین
-                کیفیت خدمات و پشتیبانی کامل.
+                نیلگون لجستیک، با سابقه‌ای بیش از ۶۰ سال در خدمات
+                <strong>باربری کرمانشاه</strong>، حمل‌ونقل بین‌شهری و درون‌شهری
+                را با ناوگان مجهز، بیمه معتبر و پشتیبانی ۲۴ ساعته ارائه می‌دهد.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 text-xlg rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 group">
-                  همین حالا شروع کنید
-                  <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+                <Button
+                  asChild
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 text-xlg rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 group"
+                >
+                  <a href="#contact">
+                    همین حالا حمل بار خود را شروع کنید
+                    <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+                  </a>
                 </Button>
               </div>
 
@@ -66,7 +77,7 @@ export default function HeroSection() {
                     <Globe className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="font-semibold">پوشش سراسری</p>
+                    <h2 className="font-semibold">پوشش سراسری</h2>
                     <p className="text-emerald-200">
                       تمام نقاط ایران، بنادر و مرزها
                     </p>
@@ -77,7 +88,7 @@ export default function HeroSection() {
                     <Clock className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="font-semibold">تحویل سریع</p>
+                    <h2 className="font-semibold">تحویل سریع</h2>
                     <p className="text-emerald-200">در کمترین زمان ممکن</p>
                   </div>
                 </div>
@@ -86,7 +97,7 @@ export default function HeroSection() {
                     <Shield className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <p className="font-semibold">حمل مطمئن</p>
+                    <h2 className="font-semibold">حمل مطمئن</h2>
                     <p className="text-emerald-200">بیمه بار و جبران خسارت</p>
                   </div>
                 </div>

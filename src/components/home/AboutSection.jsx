@@ -30,9 +30,10 @@ export default function AboutSection() {
               </h2>
 
               <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                باربری نیلگون خلیج فارس (مؤسسه اصفهان سابق) از سال ۱۳۴۰ در صدر
-                نوآوری زنجیره تامین بوده و با ترکیب فناوری پیشرفته و مسئولیت
-                زیست‌محیطی، نتایج استثنایی ارائه می‌دهد.
+                باربری نیلگون خلیج فارس (مؤسسه اصفهان سابق) از سال ۱۳۴۰ در استان
+                <strong>کرمانشاه</strong> در صدر نوآوری زنجیره تامین بوده و با
+                ترکیب فناوری پیشرفته و مسئولیت زیست‌محیطی، نتایج استثنایی ارائه
+                می‌دهد.
               </p>
 
               <div className="space-y-4 mb-8 text-xl">
@@ -94,8 +95,9 @@ export default function AboutSection() {
             <div className="relative">
               <div className="relative z-10">
                 <img
-                  src={`${import.meta.env.BASE_URL}assets/images/truck.jpg`}
-                  alt="تصویر یک کانتینر حمل بار"
+                  src={`${import.meta.env.BASE_URL}assets/images/truck.webp`}
+                  alt="کامیون حمل بار نیلگون خلیج فارس در حال بارگیری در کرمانشاه"
+                  loading="lazy"
                   className="rounded-2xl shadow-2xl"
                 />
                 <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-emerald-600 rounded-2xl opacity-20"></div>
@@ -107,6 +109,10 @@ export default function AboutSection() {
 
         {/* Stats */}
         <AnimatedSection className="mt-20">
+          <h3 className="text-center text-2xl font-bold text-gray-900 mb-8">
+            دستاوردهای نیلگون لجستیک در یک نگاه
+          </h3>
+
           <div className="stats-section grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">

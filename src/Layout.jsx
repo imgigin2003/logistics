@@ -7,7 +7,7 @@ export default function Layout({ children, currentPageName }) {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isHomePage = location.pathname === createPageUrl("Home");
-  const footerBg = `${import.meta.env.BASE_URL}assets/images/footer-bg.jpg`;
+  const footerBg = `${import.meta.env.BASE_URL}assets/images/footer-bg.webp`;
 
   const handleNavClick = (e, sectionId) => {
     e.preventDefault();
@@ -166,15 +166,22 @@ export default function Layout({ children, currentPageName }) {
       {/* Main Content */}
       <main className="pt-20">{children}</main>
 
-      {/* Footer - بدون تغییر، اما اگر مشکلی داشت، بگو */}
+      {/* Footer */}
       <footer className="relative bg-emerald-900 text-white py-16 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url(${footerBg})`,
-            transform: `translateY(${window.scrollY * 0.5}px)`, // scrollY رو به window.scrollY تغییر دادم (در کد اصلی scrollY تعریف نشده بود)
+            transform: `translateY(${window.scrollY * 0.5}px)`,
           }}
         >
+          <img
+            src={footerBg}
+            alt="باربری نیلگون لجستیک کرمانشاه - حمل‌ونقل بین‌شهری و درون‌شهری"
+            className="hidden"
+            loading="lazy"
+          />
+
           <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/90 via-emerald-800/80 to-emerald-700/70"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -202,11 +209,11 @@ export default function Layout({ children, currentPageName }) {
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2 text-emerald-200">
                   <Phone className="w-4 h-4" />
-                  <span>۰۹۱۸۱۳۱۶۴۰۵ | ۰۹۱۸۳۳۴۱۹۵۳</span>
+                  <span> 09181316405 | 09183341953 </span>
                 </div>
                 <div className="flex items-center gap-2 text-emerald-200">
                   <Phone className="w-4 h-4" />
-                  <span>۰۸۳۳۷۱۰۳۰۷۲ | ۰۸۳۳۷۱۰۳۰۸۱</span>
+                  <span> 08337103072 | 08337103081 </span>
                 </div>
               </div>
             </div>
