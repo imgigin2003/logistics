@@ -92,39 +92,37 @@ export default function AboutSection() {
               </div>
             </div>
 
-            <div className="relative">
-              <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-emerald-600 rounded-2xl opacity-20"></div>
-                <div className="absolute -top-6 -left-6 w-24 h-24 bg-emerald-300 rounded-full opacity-30"></div>
-              </div>
-
-              <div className="relative z-10">
-                <picture>
-                  <source
-                    srcSet={`
-                      ${
-                        import.meta.env.BASE_URL
-                      }assets/images/truck-small.webp 400w,
-                      ${
-                        import.meta.env.BASE_URL
-                      }assets/images/truck-medium.webp 800w,
-                      ${
-                        import.meta.env.BASE_URL
-                      }assets/images/truck-large.webp 1200w
-                    `}
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
-                    type="image/webp"
-                  />
-                  <img
-                    src={`${
-                      import.meta.env.BASE_URL
-                    }assets/images/truck-large.webp`}
-                    alt="کامیون حمل بار نیلگون خلیج فارس در حال بارگیری در پایانه بزرگ کرمانشاه"
-                    loading="lazy"
-                    className="rounded-2xl shadow-2xl w-full"
-                  />
-                </picture>
-              </div>
+            <div className="relative z-10">
+              <picture>
+                <source
+                  media="(max-width: 640px)"
+                  srcSet={`${
+                    import.meta.env.BASE_URL
+                  }assets/images/truck-small.webp`}
+                  type="image/webp"
+                />
+                <source
+                  media="(max-width: 1024px)"
+                  srcSet={`${
+                    import.meta.env.BASE_URL
+                  }assets/images/truck-medium.webp`}
+                  type="image/webp"
+                />
+                <source
+                  srcSet={`${
+                    import.meta.env.BASE_URL
+                  }assets/images/truck-large.webp`}
+                  type="image/webp"
+                />
+                <img
+                  src={`${
+                    import.meta.env.BASE_URL
+                  }assets/images/truck-medium.webp`}
+                  alt="کامیون حمل بار نیلگون خلیج فارس در حال بارگیری در پایانه بزرگ کرمانشاه"
+                  loading="lazy"
+                  className="rounded-2xl shadow-2xl w-full h-auto"
+                />
+              </picture>
             </div>
           </div>
         </AnimatedSection>

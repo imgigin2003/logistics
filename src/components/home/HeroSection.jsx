@@ -13,37 +13,35 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative h-screen overflow-hidden" role="banner">
+    <section className="relative min-h-[120vh] md:h-screen overflow-hidden items-center">
       {/* Parallax Background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${
-            import.meta.env.BASE_URL
-          }assets/images/hero-large.webp)`,
-          transform: `translateY(${scrollY * 0.5}px)`,
-        }}
-      >
-        <picture className="opacity-0 pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden">
+        <picture className="absolute inset-0">
           <source
-            srcSet={`
-              ${import.meta.env.BASE_URL}assets/images/hero-small.webp 480w,
-              ${import.meta.env.BASE_URL}assets/images/hero-medium.webp 800w,
-              ${import.meta.env.BASE_URL}assets/images/hero-large.webp 1200w
-            `}
-            sizes="100vw"
+            media="(max-width: 480px)"
+            srcSet={`${import.meta.env.BASE_URL}assets/images/hero-small.webp`}
+            type="image/webp"
+          />
+          <source
+            media="(max-width: 768px)"
+            srcSet={`${import.meta.env.BASE_URL}assets/images/hero-medium.webp`}
+            type="image/webp"
+          />
+          <source
+            srcSet={`${import.meta.env.BASE_URL}assets/images/hero-large.webp`}
             type="image/webp"
           />
           <img
-            src={`${import.meta.env.BASE_URL}assets/images/hero-large.webp`}
-            alt="باربری نیلگون لجستیک کرمانشاه - حمل‌ونقل بین‌شهری و درون‌شهری"
-            loading="lazy"
-            className="w-0 h-0"
+            src={`${import.meta.env.BASE_URL}assets/images/hero-medium.webp`}
+            alt="باربری نیلگون لجستیک کرمانشاه"
+            className="w-full h-full object-cover"
+            style={{
+              transform: `translateY(${scrollY * 0.5}px)`,
+            }}
           />
         </picture>
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 via-emerald-800/70 to-emerald-700/60"></div>
       </div>
-
       {/* Content */}
       <div className="relative z-10 h-full flex items-center">
         <div className="max-w-7xl mx-auto px-6 text-white">
@@ -118,7 +116,6 @@ export default function HeroSection() {
           </AnimatedSection>
         </div>
       </div>
-
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
         <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">

@@ -101,22 +101,44 @@ export default function ContactSection() {
                       </h4>
                       <div className="space-y-1 mb-2">
                         {info.details.map((detail, idx) => {
-                          const cleanedNumber = detail.replace(/[^\d]/g, "");
+                          if (
+                            detail.includes("+98") ||
+                            /^[\d+]+$/.test(detail.replace(/\s/g, ""))
+                          ) {
+                            const cleanedNumber = detail.replace(/[^\d]/g, "");
 
-                          const localNumber = cleanedNumber.startsWith("98")
-                            ? "0" + cleanedNumber.slice(2)
-                            : cleanedNumber;
+                            let localNumber;
+                            if (cleanedNumber.startsWith("98")) {
+                              if (cleanedNumber.startsWith("9891")) {
+                                localNumber = "0" + cleanedNumber.slice(2);
+                              } else if (cleanedNumber.startsWith("98337")) {
+                                localNumber = "0" + cleanedNumber.slice(1);
+                              } else if (cleanedNumber.startsWith("98")) {
+                                localNumber = "0" + cleanedNumber.slice(2);
+                              } else {
+                                localNumber = "0" + cleanedNumber.slice(2);
+                              }
+                            } else {
+                              localNumber = detail;
+                            }
 
-                          return (
-                            <a
-                              key={idx}
-                              href={`tel:${localNumber}`}
-                              className="block text-gray-600 text-sm hover:text-emerald-600 transition-colors"
-                              dir="ltr"
-                            >
-                              {detail}
-                            </a>
-                          );
+                            return (
+                              <a
+                                key={idx}
+                                href={`tel:${localNumber}`}
+                                className="block text-gray-600 text-sm hover:text-emerald-600 transition-colors"
+                                dir="ltr"
+                              >
+                                {detail}
+                              </a>
+                            );
+                          } else {
+                            return (
+                              <p key={idx} className="text-gray-600 text-sm">
+                                {detail}
+                              </p>
+                            );
+                          }
                         })}
                       </div>
                       <p className="text-xs text-emerald-600 font-medium">

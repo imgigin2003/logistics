@@ -168,30 +168,34 @@ export default function Layout({ children, currentPageName }) {
       {/* Footer */}
       <footer className="relative bg-emerald-900 text-white py-16 overflow-hidden">
         {/* Parallax footer */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url(${
-              import.meta.env.BASE_URL
-            }assets/images/footer-large.webp)`,
-            transform: `translateY(${scrollY * 0.5}px)`,
-          }}
-        >
-          <picture className="opacity-0 pointer-events-none">
+        <div className="absolute inset-0 overflow-hidden">
+          <picture className="absolute inset-0">
             <source
-              srcSet={`
-              ${import.meta.env.BASE_URL}assets/images/footer-small.webp 480w,
-              ${import.meta.env.BASE_URL}assets/images/footer-medium.webp 800w,
-              ${import.meta.env.BASE_URL}assets/images/footer-large.webp 1200w
-            `}
-              sizes="100vw"
+              media="(max-width: 480px)"
+              srcSet={`${
+                import.meta.env.BASE_URL
+              }assets/images/footer-small.webp`}
+              type="image/webp"
+            />
+            <source
+              media="(max-width: 768px)"
+              srcSet={`${
+                import.meta.env.BASE_URL
+              }assets/images/footer-medium.webp`}
+              type="image/webp"
+            />
+            <source
+              srcSet={`${
+                import.meta.env.BASE_URL
+              }assets/images/footer-large.webp`}
               type="image/webp"
             />
             <img
-              src={`${import.meta.env.BASE_URL}assets/images/footer-large.webp`}
-              alt="کشتی‌های باری در حال بارگیری کانتینرها در بندر با جرثقیل‌های بزرگ"
-              loading="lazy"
-              className="w-0 h-0"
+              src={`${
+                import.meta.env.BASE_URL
+              }assets/images/footer-medium.webp`}
+              alt="کشتی‌های باری در حال بارگیری کانتینرها در بندر"
+              className="w-full h-full object-cover"
             />
           </picture>
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 via-emerald-800/70 to-emerald-700/60"></div>
