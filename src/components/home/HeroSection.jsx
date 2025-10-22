@@ -5,7 +5,6 @@ import AnimatedSection from "./AnimatedSection";
 
 export default function HeroSection() {
   const [scrollY, setScrollY] = useState(0);
-  const heroBg = `${import.meta.env.BASE_URL}assets/images/hero-bg.webp`;
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -19,16 +18,29 @@ export default function HeroSection() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${heroBg})`,
+          backgroundImage: `url(${
+            import.meta.env.BASE_URL
+          }assets/images/hero-large.webp)`,
           transform: `translateY(${scrollY * 0.5}px)`,
         }}
       >
-        <img
-          src={heroBg}
-          alt="باربری نیلگون لجستیک کرمانشاه - حمل‌ونقل بین‌شهری و درون‌شهری"
-          className="hidden"
-          loading="lazy"
-        />
+        <picture className="opacity-0 pointer-events-none">
+          <source
+            srcSet={`
+              ${import.meta.env.BASE_URL}assets/images/hero-small.webp 480w,
+              ${import.meta.env.BASE_URL}assets/images/hero-medium.webp 800w,
+              ${import.meta.env.BASE_URL}assets/images/hero-large.webp 1200w
+            `}
+            sizes="100vw"
+            type="image/webp"
+          />
+          <img
+            src={`${import.meta.env.BASE_URL}assets/images/hero-large.webp`}
+            alt="باربری نیلگون لجستیک کرمانشاه - حمل‌ونقل بین‌شهری و درون‌شهری"
+            loading="lazy"
+            className="w-0 h-0"
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 via-emerald-800/70 to-emerald-700/60"></div>
       </div>
 

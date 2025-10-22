@@ -7,7 +7,6 @@ export default function Layout({ children, currentPageName }) {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isHomePage = location.pathname === createPageUrl("Home");
-  const footerBg = `${import.meta.env.BASE_URL}assets/images/footer-bg.webp`;
 
   const handleNavClick = (e, sectionId) => {
     e.preventDefault();
@@ -168,21 +167,34 @@ export default function Layout({ children, currentPageName }) {
 
       {/* Footer */}
       <footer className="relative bg-emerald-900 text-white py-16 overflow-hidden">
+        {/* Parallax footer */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url(${footerBg})`,
-            transform: `translateY(${window.scrollY * 0.5}px)`,
+            backgroundImage: `url(${
+              import.meta.env.BASE_URL
+            }assets/images/footer-large.webp)`,
+            transform: `translateY(${scrollY * 0.5}px)`,
           }}
         >
-          <img
-            src={footerBg}
-            alt="باربری نیلگون لجستیک کرمانشاه - حمل‌ونقل بین‌شهری و درون‌شهری"
-            className="hidden"
-            loading="lazy"
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/90 via-emerald-800/80 to-emerald-700/70"></div>
+          <picture className="opacity-0 pointer-events-none">
+            <source
+              srcSet={`
+              ${import.meta.env.BASE_URL}assets/images/footer-small.webp 480w,
+              ${import.meta.env.BASE_URL}assets/images/footer-medium.webp 800w,
+              ${import.meta.env.BASE_URL}assets/images/footer-large.webp 1200w
+            `}
+              sizes="100vw"
+              type="image/webp"
+            />
+            <img
+              src={`${import.meta.env.BASE_URL}assets/images/footer-large.webp`}
+              alt="کشتی‌های باری در حال بارگیری کانتینرها در بندر با جرثقیل‌های بزرگ"
+              loading="lazy"
+              className="w-0 h-0"
+            />
+          </picture>
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 via-emerald-800/70 to-emerald-700/60"></div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8">
