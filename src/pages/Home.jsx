@@ -10,6 +10,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "نیلگون لجستیک - باربری نیلگون خلیج فارس",
+    logo: "https://nilgoonlogistics.ir/truck.svg",
     image: "https://nilgoonlogistics.ir/truck.svg",
     url: "https://nilgoonlogistics.ir",
     telephone: "+98-918-1316405",

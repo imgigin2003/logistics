@@ -33,11 +33,9 @@ export default function HeroSection() {
           />
           <img
             src={`${import.meta.env.BASE_URL}assets/images/hero-medium.webp`}
-            alt="باربری نیلگون لجستیک کرمانشاه"
+            alt="کامیون حمل بار نیلگون خلیج فارس در پایانه کرمانشاه - خدمات باربری و لجستیک در سراسر ایران"
             className="w-full h-full object-cover"
-            style={{
-              transform: `translateY(${scrollY * 0.5}px)`,
-            }}
+            style={{ transform: `translateY(${scrollY * 0.5}px)` }}
           />
         </picture>
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 via-emerald-800/70 to-emerald-700/60"></div>

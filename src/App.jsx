@@ -4,6 +4,7 @@ import Layout from "@/Layout";
 import Home from "@/pages/Home";
 import Review from "@/pages/Review";
 import { HelmetProvider } from "react-helmet-async";
+import NotFound from "@/NotFound";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               </Layout>
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </HelmetProvider>

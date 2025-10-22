@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+
 Sitemap: https://nilgoonlogistics.ir/sitemap.xml
+
+# Crawl-delay: 10

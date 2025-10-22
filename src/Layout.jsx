@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createPageUrl } from "@/utils";
 import { Link, useLocation } from "react-router-dom";
 import { Phone, MapPin, Truck, Clock, Menu, X } from "lucide-react";
+import StructuredData from "@/components/home/StructuredData";
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
@@ -33,6 +34,7 @@ export default function Layout({ children, currentPageName }) {
 
   return (
     <div className="min-h-screen bg-white">
+      <StructuredData />
       {/* Navigation */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${

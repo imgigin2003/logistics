@@ -118,9 +118,8 @@ export default function AboutSection() {
                   src={`${
                     import.meta.env.BASE_URL
                   }assets/images/truck-medium.webp`}
-                  alt="کامیون حمل بار نیلگون خلیج فارس در حال بارگیری در پایانه بزرگ کرمانشاه"
-                  loading="lazy"
-                  className="rounded-2xl shadow-2xl w-full h-auto"
+                  alt="کامیون حمل بار نیلگون خلیج فارس در پایانه کرمانشاه - خدمات حمل بار تجاری و صنعتی"
+                  className="w-full h-full object-cover"
                 />
               </picture>
             </div>
