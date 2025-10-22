@@ -60,7 +60,7 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden">
       <Helmet>
-        <title>نیلگون لجستیک | باربری کرمانشاه - حمل بار سریع و مطمئن</title>
+        <title>نیلگون خلیج‌فارس | باربری کرمانشاه - حمل بار سریع و مطمئن</title>
         <meta
           name="description"
           content="شرکت نیلگون لجستیک ارائه‌دهنده خدمات باربری در کرمانشاه و سراسر کشور، با ناوگان مدرن، قیمت مناسب و پشتیبانی ۲۴ ساعته."
