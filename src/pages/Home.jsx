@@ -9,9 +9,9 @@ export default function Home() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "نیلگون لجستیک - باربری نیلگون خلیج فارس",
-    logo: "https://nilgoonlogistics.ir/truck.svg",
-    image: "https://nilgoonlogistics.ir/truck.svg",
+    name: "پایانه بار کرمانشاه | باربری نیلگون خلیج فارس",
+    logo: "https://nilgoonlogistics.ir/favicon.ico",
+    image: "https://nilgoonlogistics.ir/favicon.svg",
     url: "https://nilgoonlogistics.ir",
     telephone: "+98-918-1316405",
     priceRange: "توافقی",
@@ -74,7 +74,7 @@ export default function Home() {
         {/* Open Graph for social media networks */}
         <meta
           property="og:title"
-          content="نیلگون لجستیک | باربری کرمانشاه - حمل بار سریع"
+          content="نیلگون خلیج‌فارس | پایانه بار کرمانشاه - حمل بار سریع"
         />
         <meta
           property="og:description"
