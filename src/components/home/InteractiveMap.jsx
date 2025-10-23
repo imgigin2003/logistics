@@ -41,6 +41,7 @@ export default function InteractiveMap() {
         scrollWheelZoom={true}
         style={{ height: "100%", width: "100%" }}
         className="rounded-2xl"
+        aria-label="نقشه تعاملی موقعیت باربری نیلگون خلیج فارس در پایانه بزرگ کرمانشاه"
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

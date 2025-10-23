@@ -63,25 +63,38 @@ export default function Home() {
         <title>نیلگون خلیج‌فارس | باربری کرمانشاه - حمل بار سریع و مطمئن</title>
         <meta
           name="description"
-          content="شرکت نیلگون لجستیک ارائه‌دهنده خدمات باربری در کرمانشاه و سراسر کشور، با ناوگان مدرن، قیمت مناسب و پشتیبانی ۲۴ ساعته."
+          content="باربری نیلگون خلیج فارس در کرمانشاه: حمل سریع و مطمئن بار با بیمه معتبر، قیمت منصفانه و پشتیبانی ۲۴ ساعته"
         />
         <meta
           name="keywords"
-          content="باربری کرمانشاه, حمل بار کرمانشاه, باربری نیلگون, نیلگون لجستیک, باربری بین‌شهری, ارسال بار, شرکت حمل و نقل, پایانه بار کرمانشاه, logistics, moving company, cargo"
+          content="باربری کرمانشاه, حمل بار کرمانشاه, نیلگون لجستیک, حمل بار بین‌شهری, شرکت حمل و نقل کرمانشاه, ارسال بار, logistics Iran, moving company, cargo transport"
         />
         <meta name="robots" content="index, follow" />
 
         {/* Open Graph for social media networks */}
-        <meta property="og:title" content="نیلگون لجستیک | باربری کرمانشاه" />
+        <meta
+          property="og:title"
+          content="نیلگون لجستیک | باربری کرمانشاه - حمل بار سریع"
+        />
         <meta
           property="og:description"
-          content="خدمات تخصصی حمل‌ونقل و باربری در کرمانشاه. سریع، ایمن و مقرون‌به‌صرفه."
+          content="حمل بار مطمئن در کرمانشاه و سراسر ایران با بیش از ۸۰ سال تجربه. بیمه معتبر و پشتیبانی ۲۴ ساعته."
         />
         <meta property="og:url" content="https://nilgoonlogistics.ir" />
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
           content="https://nilgoonlogistics.ir/truck.svg"
+        />
+        <meta property="og:locale" content="fa_IR" />
+        <meta property="og:site_name" content="Nilgoon Logistics" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="باربری نیلگون خلیج فارس" />
+        <meta
+          name="twitter:description"
+          content="خدمات حمل بار در کرمانشاه و سراسر ایران با بیش از ۸۰ سال تجربه"
         />
 
         <link rel="canonical" href="https://nilgoonlogistics.ir/" />
