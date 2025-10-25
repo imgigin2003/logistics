@@ -13,7 +13,7 @@ export default defineConfig({
       cache: true,
       png: { quality: 80 },
       jpeg: { quality: 85 },
-      webp: { lossless: false, quality: 75 },
+      webp: { lossless: false, quality: 60 },
       svgo: {
         plugins: ["preset-default", "removeViewBox:false"],
       },
