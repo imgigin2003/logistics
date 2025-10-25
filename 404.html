@@ -1,16 +1,13 @@
-<!-- public/404.html -->
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>صفحه یافت نشد - نیلگون لجستیک</title>
+    <title>در حال بارگذاری...</title>
     <script>
-      // ریدایرکت به index.html با حفظ مسیر
+      // بهترین روش: فقط index.html رو لود کن + مسیر رو حفظ کن
       const path = location.pathname + location.search + location.hash;
-      window.location.replace(location.origin + "/" + path);
+      window.location.replace("/index.html" + path);
     </script>
   </head>
-  <body>
-    در حال انتقال...
-  </body>
+  <body></body>
 </html>
