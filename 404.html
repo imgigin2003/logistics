@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa">
   <head>
     <meta charset="utf-8" />
     <title>در حال بارگذاری...</title>
     <script>
-      // بهترین روش: فقط index.html رو لود کن + مسیر رو حفظ کن
-      const path = location.pathname + location.search + location.hash;
-      window.location.replace("/index.html" + path);
+      // فقط یک بار ریدایرکت به index.html با حفظ مسیر
+      const currentPath =
+        window.location.pathname +
+        window.location.search +
+        window.location.hash;
+      const targetUrl =
+        "/index.html" + (currentPath === "/" ? "" : currentPath);
+      window.location.replace(targetUrl);
     </script>
   </head>
-  <body></body>
+  <body>
+    <p>در حال انتقال...</p>
+  </body>
 </html>
