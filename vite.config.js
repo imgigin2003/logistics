@@ -2,10 +2,16 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
+import legacy from "@vitejs/plugin-legacy";
 
 export default defineConfig({
   plugins: [
     react(),
+    legacy({
+      targets: ["chrome >= 64", "edge >= 79", "firefox >= 67", "safari >= 12"],
+      additionalLegacyPolyfills: ["regenerator-runtime/runtime"],
+      renderLegacyChunks: true,
+    }),
     ViteImageOptimizer({
       logStats: true,
       cache: true,
@@ -22,6 +28,15 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: undefined,
+      },
+    },
+    minify: "terser",
+    terserOptions: {
+      compress: {
+        drop_console: false,
+      },
+      format: {
+        comments: false,
       },
     },
   },
