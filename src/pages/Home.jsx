@@ -60,7 +60,9 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden">
       <Helmet>
-        <title>نیلگون خلیج‌فارس | باربری کرمانشاه - حمل بار سریع و مطمئن</title>
+        <title>
+          پایانه بار کرمانشاه | باربری نیلگون خلیج فارس - حمل بار سریع و مطمئن
+        </title>
         <meta
           name="description"
           content="باربری نیلگون خلیج فارس در کرمانشاه: حمل سریع و مطمئن بار با بیمه معتبر، قیمت منصفانه و پشتیبانی ۲۴ ساعته"

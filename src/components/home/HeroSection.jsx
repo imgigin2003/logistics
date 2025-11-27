@@ -54,7 +54,7 @@ export default function HeroSection() {
               </div>
 
               <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
-                باربری در کرمانشاه با
+                پایانه بار کرمانشاه
                 <span className="block text-emerald-300">نیلگون خلیج‌فارس</span>
                 <span className="block text-white text-4xl md:text-5xl mt-2">
                   (مؤسسه اصفهان سابق)

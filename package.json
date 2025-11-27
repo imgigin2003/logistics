@@ -3,28 +3,9 @@
   "private": true,
   "version": "3.0.0",
   "type": "module",
-  "reactSnap": {
-    "source": "dist",
-    "include": [
-      "/",
-      "/review"
-    ],
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox"
-    ],
-    "skipThirdPartyRequests": true,
-    "minifyHtml": {
-      "collapseWhitespace": false,
-      "removeComments": false
-    },
-    "waitUntil": "networkidle0",
-    "helmetHtml": true
-  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "postbuild": "react-snap",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
