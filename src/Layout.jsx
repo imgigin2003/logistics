@@ -95,12 +95,20 @@ export default function Layout({ children, currentPageName }) {
               >
                 تماس با ما
               </a>
-              <Link
-                to={createPageUrl("Review")}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
+              <a
+                href="/review"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (location.pathname === "/review") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  } else {
+                    window.location.href = "/review";
+                  }
+                }}
+                className="text-gray-700 hover:text-emerald-600 font-medium transition-colors cursor-pointer"
               >
-                ثبت بازخورد
-              </Link>
+                ثبت نظر
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -152,13 +160,20 @@ export default function Layout({ children, currentPageName }) {
               >
                 تماس با ما
               </a>
-              <Link
-                to={createPageUrl("Review")}
-                className="block bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-full font-medium text-center transition-all duration-300"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <a
+                href="/review"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (location.pathname === "/review") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  } else {
+                    window.location.href = "/review";
+                  }
+                }}
+                className="text-gray-700 hover:text-emerald-600 font-medium transition-colors cursor-pointer"
               >
-                ثبت بازخورد
-              </Link>
+                ثبت نظر
+              </a>
             </div>
           </div>
         )}

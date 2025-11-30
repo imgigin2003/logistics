@@ -86,7 +86,7 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://nilgoonlogistics.ir/truck.svg"
+          content="https://nilgoonlogistics.ir/assets/images/hero-medium.webp"
         />
         <meta property="og:locale" content="fa_IR" />
         <meta property="og:site_name" content="Nilgoon Logistics" />

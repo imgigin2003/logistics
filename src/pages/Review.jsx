@@ -56,6 +56,7 @@ export default function ReviewPage() {
 
   return (
     <>
+      <StructuredData />
       <Helmet>
         <title>ثبت بازخورد | باربری نیلگون خلیج فارس - نیلگون لجستیک</title>
         <meta
@@ -79,7 +80,7 @@ export default function ReviewPage() {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://nilgoonlogistics.ir/truck.svg"
+          content="https://nilgoonlogistics.ir/assets/images/hero-medium.webp"
         />
         <link rel="canonical" href="https://nilgoonlogistics.ir/review" />
       </Helmet>
