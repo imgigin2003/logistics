@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { MapPin } from "lucide-react";
 import "leaflet/dist/leaflet.css";
@@ -18,21 +17,6 @@ L.Icon.Default.mergeOptions({
 const location = [34.349351752378915, 47.21416478946306];
 
 export default function InteractiveMap() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    // چون leaflet فقط باید در مرورگر اجرا بشه
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <div className="h-full w-full bg-gray-200 flex items-center justify-center">
-        در حال بارگذاری نقشه...
-      </div>
-    );
-  }
-
   return (
     <div className="h-full w-full rounded-2xl overflow-hidden">
       <MapContainer

@@ -2,7 +2,8 @@
 
 @font-face {
   font-family: "Far Diplomat";
-  src: url("/assets/fonts/Far_Diplomat.ttf") format("truetype");
+  src: url("/assets/fonts/Far_Diplomat.woff2") format("woff2"),
+    url("/assets/fonts/Far_Diplomat.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -10,7 +11,8 @@
 
 @font-face {
   font-family: "Lalezar";
-  src: url("/assets/fonts/Lalezar-Regular.ttf") format("truetype");
+  src: url("/assets/fonts/Lalezar-Regular.woff2") format("woff2"),
+    url("/assets/fonts/Lalezar-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;

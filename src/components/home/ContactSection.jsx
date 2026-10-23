@@ -1,12 +1,52 @@
-import { useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Phone, MapPin, Clock, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import AnimatedSection from "./AnimatedSection";
-import InteractiveMap from "./InteractiveMap";
 import ErrorBoundary from "@/components/ErrorBoundary";
+
+// Leaflet touches `window` at import time, so it is loaded in the browser only,
+// and only once the map is about to scroll into view.
+const InteractiveMap = lazy(() => import("./InteractiveMap"));
+
+const mapPlaceholder = (
+  <div className="h-full w-full bg-gray-200 flex items-center justify-center">
+    در حال بارگذاری نقشه...
+  </div>
+);
+
+function LazyMap() {
+  const containerRef = useRef(null);
+  const [isNearViewport, setIsNearViewport] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsNearViewport(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={containerRef} className="h-full w-full">
+      {isNearViewport ? (
+        <Suspense fallback={mapPlaceholder}>
+          <InteractiveMap />
+        </Suspense>
+      ) : (
+        mapPlaceholder
+      )}
+    </div>
+  );
+}
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -38,7 +78,7 @@ export default function ContactSection() {
     {
       icon: Phone,
       title: "تماس با ما - ثابت",
-      details: ["+98337103072", "+98337103081"],
+      details: ["+988337103072", "+988337103081"],
       description: "تضمین شده",
     },
     {
@@ -153,7 +193,7 @@ export default function ContactSection() {
             {/* Map placeholder */}
             <div className="relative h-96 rounded-2xl overflow-hidden">
               <ErrorBoundary>
-                <InteractiveMap />
+                <LazyMap />
               </ErrorBoundary>
             </div>
           </AnimatedSection>
@@ -168,10 +208,11 @@ export default function ContactSection() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-sm font-medium text-gray-700 mb-2 block">
+                      <label htmlFor="contact-name" className="text-sm font-medium text-gray-700 mb-2 block">
                         نام و نام خانوادگی
                       </label>
                       <Input
+                        id="contact-name"
                         placeholder="احمد احمدی"
                         value={formData.name}
                         onChange={(e) =>
@@ -182,10 +223,11 @@ export default function ContactSection() {
                       />
                     </div>
                     <div>
-                      <label className="text-sm font-medium text-gray-700 mb-2 block">
+                      <label htmlFor="contact-email" className="text-sm font-medium text-gray-700 mb-2 block">
                         ایمیل
                       </label>
                       <Input
+                        id="contact-email"
                         type="email"
                         placeholder="ahmad@company.com"
                         value={formData.email}
@@ -200,10 +242,11 @@ export default function ContactSection() {
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-sm font-medium text-gray-700 mb-2 block">
+                      <label htmlFor="contact-phone" className="text-sm font-medium text-gray-700 mb-2 block">
                         شماره تماس
                       </label>
                       <Input
+                        id="contact-phone"
                         placeholder="۰۹۱۲۳۴۵۶۷۸۹"
                         value={formData.phone}
                         onChange={(e) =>
@@ -213,10 +256,11 @@ export default function ContactSection() {
                       />
                     </div>
                     <div>
-                      <label className="text-sm font-medium text-gray-700 mb-2 block">
+                      <label htmlFor="contact-company" className="text-sm font-medium text-gray-700 mb-2 block">
                         نام شرکت
                       </label>
                       <Input
+                        id="contact-company"
                         placeholder="شرکت شما"
                         value={formData.company}
                         onChange={(e) =>
@@ -228,10 +272,11 @@ export default function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium text-gray-700 mb-2 block">
+                    <label htmlFor="contact-message" className="text-sm font-medium text-gray-700 mb-2 block">
                       پیام
                     </label>
                     <Textarea
+                        id="contact-message"
                       placeholder="نیازهای حمل و نقل خود را برای ما توضیح دهید..."
                       rows={4}
                       value={formData.message}

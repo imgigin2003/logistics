@@ -1,19 +1,59 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Globe, Clock, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AnimatedSection from "./AnimatedSection";
 
 export default function HeroSection() {
-  const [scrollY, setScrollY] = useState(0);
+  const imageRef = useRef(null);
 
+  // Parallax: write the transform directly instead of re-rendering on every scroll
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    let frame = 0;
+    const handleScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        if (imageRef.current) {
+          imageRef.current.style.transform = `translateY(${window.scrollY * 0.5}px)`;
+        }
+      });
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
     <section className="relative min-h-[120vh] md:h-screen overflow-hidden items-center">
+      {/* Preload the LCP image; media queries mirror the <picture> sources below */}
+      <Helmet>
+        <link
+          rel="preload"
+          as="image"
+          href={`${import.meta.env.BASE_URL}assets/images/hero-small.webp`}
+          type="image/webp"
+          media="(max-width: 480px)"
+          fetchpriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href={`${import.meta.env.BASE_URL}assets/images/hero-medium.webp`}
+          type="image/webp"
+          media="(min-width: 481px) and (max-width: 768px)"
+          fetchpriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href={`${import.meta.env.BASE_URL}assets/images/hero-large.webp`}
+          type="image/webp"
+          media="(min-width: 769px)"
+          fetchpriority="high"
+        />
+      </Helmet>
       {/* Parallax Background */}
       <div className="absolute inset-0 overflow-hidden">
         <picture className="absolute inset-0">
@@ -33,9 +73,13 @@ export default function HeroSection() {
           />
           <img
             src={`${import.meta.env.BASE_URL}assets/images/hero-medium.webp`}
-            alt="کامیون حمل بار نیلگون خلیج فارس در پایانه کرمانشاه - خدمات باربری و لجستیک در سراسر ایران"
+            alt="انبار کالا با قفسه‌ها و جعبه‌های آماده ارسال - خدمات باربری و لجستیک در سراسر ایران"
+            width={800}
+            height={533}
+            fetchpriority="high"
+            decoding="async"
+            ref={imageRef}
             className="w-full h-full object-cover"
-            style={{ transform: `translateY(${scrollY * 0.5}px)` }}
           />
         </picture>
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/80 via-emerald-800/70 to-emerald-700/60"></div>
@@ -62,7 +106,7 @@ export default function HeroSection() {
               </h1>
 
               <p className="text-xl text-emerald-100 leading-relaxed mb-8 max-w-2xl">
-                نیلگون لجستیک، با سابقه‌ای بیش از ۶۰ سال در خدمات
+                نیلگون لجستیک، با سابقه‌ای بیش از ۶۰ سال در خدمات{" "}
                 <strong>باربری کرمانشاه</strong>، حمل‌ونقل بین‌شهری و درون‌شهری
                 را با ناوگان مجهز، بیمه معتبر و پشتیبانی ۲۴ ساعته ارائه می‌دهد.
               </p>
@@ -85,7 +129,7 @@ export default function HeroSection() {
                     <Globe className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h2 className="font-semibold">پوشش سراسری</h2>
+                    <p className="first-heading font-semibold">پوشش سراسری</p>
                     <p className="text-emerald-200">
                       تمام نقاط ایران، بنادر و مرزها
                     </p>
@@ -96,7 +140,7 @@ export default function HeroSection() {
                     <Clock className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h2 className="font-semibold">تحویل سریع</h2>
+                    <p className="first-heading font-semibold">تحویل سریع</p>
                     <p className="text-emerald-200">در کمترین زمان ممکن</p>
                   </div>
                 </div>
@@ -105,7 +149,7 @@ export default function HeroSection() {
                     <Shield className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h2 className="font-semibold">حمل مطمئن</h2>
+                    <p className="first-heading font-semibold">حمل مطمئن</p>
                     <p className="text-emerald-200">بیمه بار و جبران خسارت</p>
                   </div>
                 </div>

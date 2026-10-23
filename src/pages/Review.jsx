@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Helmet } from "react-helmet-async";
+import Seo from "@/components/Seo";
+import { PAGES } from "@/config/seo";
 import {
   Select,
   SelectContent,
@@ -56,34 +57,7 @@ export default function ReviewPage() {
 
   return (
     <>
-      <StructuredData />
-      <Helmet>
-        <title>ثبت بازخورد | باربری نیلگون خلیج فارس - نیلگون لجستیک</title>
-        <meta
-          name="description"
-          content="نظر خود را درباره خدمات باربری و حمل بار نیلگون خلیج فارس در کرمانشاه ثبت کنید. بازخورد شما به بهبود خدمات ما کمک می‌کند."
-        />
-        <meta
-          name="keywords"
-          content="ثبت نظر, بازخورد باربری, نظرات مشتریان نیلگون, باربری کرمانشاه"
-        />
-        <meta name="robots" content="index, follow" />
-        <meta
-          property="og:title"
-          content="ثبت بازخورد | باربری نیلگون خلیج فارس"
-        />
-        <meta
-          property="og:description"
-          content="تجربه خود را با خدمات حمل و نقل نیلگون به اشتراک بگذارید."
-        />
-        <meta property="og:url" content="https://nilgoonlogistics.ir/review" />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:image"
-          content="https://nilgoonlogistics.ir/assets/images/hero-medium.webp"
-        />
-        <link rel="canonical" href="https://nilgoonlogistics.ir/review" />
-      </Helmet>
+      <Seo {...PAGES.review} />
 
       {isSubmitted ? (
         <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-white flex items-center justify-center p-6">
@@ -93,18 +67,19 @@ export default function ReviewPage() {
                 <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <CheckCircle className="w-8 h-8 text-emerald-600" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                <h1 className="text-2xl font-bold text-gray-900 mb-4">
                   متشکریم!
-                </h2>
+                </h1>
                 <p className="text-gray-600 mb-6">
                   نظر شما با موفقیت ثبت شد. از بازخورد شما سپاسگزاریم و از آن
                   برای بهبود خدمات‌مان استفاده خواهیم کرد.
                 </p>
-                <Link to={createPageUrl("Home")}>
-                  <Button className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full">
-                    بازگشت به صفحه اصلی
-                  </Button>
-                </Link>
+                <Button
+                  asChild
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full"
+                >
+                  <Link to={createPageUrl("Home")}>بازگشت به صفحه اصلی</Link>
+                </Button>
               </CardContent>
             </Card>
           </AnimatedSection>
@@ -113,11 +88,16 @@ export default function ReviewPage() {
         <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-white py-12">
           <div className="max-w-3xl mx-auto px-6">
             <div className="flex items-center gap-4 mb-8">
-              <Link to={createPageUrl("Home")}>
-                <Button variant="outline" size="icon" className="rounded-full">
+              <Button
+                asChild
+                variant="outline"
+                size="icon"
+                className="rounded-full"
+              >
+                <Link to={createPageUrl("Home")} aria-label="بازگشت به صفحه اصلی">
                   <ArrowRight className="w-4 h-4" />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
               <div>
                 <h1 className="text-3xl font-bold text-gray-900">
                   ثبت بازخورد
@@ -143,10 +123,11 @@ export default function ReviewPage() {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="text-sm font-medium text-gray-700 mb-2 block">
+                        <label htmlFor="review-company" className="text-sm font-medium text-gray-700 mb-2 block">
                           نام شرکت
                         </label>
                         <Input
+                          id="review-company"
                           placeholder="نام شرکت شما"
                           value={formData.company_name}
                           onChange={(e) =>
@@ -160,10 +141,11 @@ export default function ReviewPage() {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-medium text-gray-700 mb-2 block">
+                        <label htmlFor="review-name" className="text-sm font-medium text-gray-700 mb-2 block">
                           نام و نام خانوادگی
                         </label>
                         <Input
+                          id="review-name"
                           placeholder="نام شما"
                           value={formData.contact_person}
                           onChange={(e) =>
@@ -180,10 +162,11 @@ export default function ReviewPage() {
 
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="text-sm font-medium text-gray-700 mb-2 block">
+                        <label htmlFor="review-email" className="text-sm font-medium text-gray-700 mb-2 block">
                           ایمیل
                         </label>
                         <Input
+                          id="review-email"
                           type="email"
                           placeholder="email@company.com"
                           value={formData.email}
@@ -195,10 +178,11 @@ export default function ReviewPage() {
                         />
                       </div>
                       <div>
-                        <label className="text-sm font-medium text-gray-700 mb-2 block">
+                        <label htmlFor="review-phone" className="text-sm font-medium text-gray-700 mb-2 block">
                           شماره تماس
                         </label>
                         <Input
+                          id="review-phone"
                           placeholder="۰۹۱۲۳۴۵۶۷۸۹"
                           value={formData.phone}
                           onChange={(e) =>
@@ -242,6 +226,8 @@ export default function ReviewPage() {
                           <button
                             key={star}
                             type="button"
+                            aria-label={`امتیاز ${star} از ۵`}
+                            aria-pressed={star <= formData.rating}
                             onClick={() =>
                               setFormData({ ...formData, rating: star })
                             }
@@ -267,10 +253,11 @@ export default function ReviewPage() {
                     </div>
 
                     <div>
-                      <label className="text-sm font-medium text-gray-700 mb-2 block">
+                      <label htmlFor="review-text" className="text-sm font-medium text-gray-700 mb-2 block">
                         نظر شما *
                       </label>
                       <Textarea
+                          id="review-text"
                         placeholder="درباره تجربه خود با باربری نیلگون خلیج فارس بنویسید. چه کارهایی را خوب انجام دادیم؟ چگونه می‌توانیم بهتر شویم؟"
                         rows={6}
                         value={formData.review_text}

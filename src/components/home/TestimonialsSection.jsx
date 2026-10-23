@@ -1,7 +1,6 @@
 import { Star, Quote } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import AnimatedSection from "./AnimatedSection";
-import { Helmet } from "react-helmet-async";
 
 export default function TestimonialsSection() {
   const testimonials = [
@@ -28,11 +27,6 @@ export default function TestimonialsSection() {
     },
   ];
 
-  const companyReviewed = {
-    "@type": "Organization",
-    name: "باربری نیلگون خلیج فارس",
-    url: "https://nilgoonlogistics.ir",
-  };
 
   return (
     <section
@@ -40,32 +34,6 @@ export default function TestimonialsSection() {
       className="py-24 bg-gradient-to-b from-emerald-50 to-white"
     >
       <div className="max-w-7xl mx-auto px-6">
-        <Helmet>
-          <script type="application/ld+json">
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              ...companyReviewed,
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "5",
-                reviewCount: "200",
-              },
-              review: testimonials.map((t) => ({
-                "@type": "Review",
-                author: {
-                  "@type": "Person",
-                  name: t.name,
-                },
-                reviewBody: t.text,
-                reviewRating: {
-                  "@type": "Rating",
-                  ratingValue: t.rating,
-                },
-              })),
-            })}
-          </script>
-        </Helmet>
         <AnimatedSection>
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full mb-6">
@@ -102,9 +70,9 @@ export default function TestimonialsSection() {
                     </p>
                   </div>
                   <div className="border-t border-gray-100 pt-6">
-                    <h4 className="font-semibold text-gray-900">
+                    <h3 className="font-semibold text-gray-900">
                       {testimonial.name}
-                    </h4>
+                    </h3>
                     <p className="text-emerald-600 font-medium mt-1">
                       {testimonial.title}
                     </p>
@@ -112,25 +80,6 @@ export default function TestimonialsSection() {
                   </div>
                 </CardContent>
               </Card>
-
-              <script type="application/ld+json">
-                {JSON.stringify({
-                  "@context": "https://schema.org",
-                  "@type": "Review",
-                  author: {
-                    "@type": "Person",
-                    name: testimonial.name,
-                  },
-                  reviewBody: testimonial.text,
-                  reviewRating: {
-                    "@type": "Rating",
-                    ratingValue: testimonial.rating,
-                    bestRating: "5",
-                    worstRating: "1",
-                  },
-                  itemReviewed: companyReviewed,
-                })}
-              </script>
             </AnimatedSection>
           ))}
         </div>

@@ -15,6 +15,8 @@ export default defineConfig({
     ViteImageOptimizer({
       logStats: true,
       cache: true,
+      // Keep the cache out of the repo root (it was being committed by accident)
+      cacheLocation: "node_modules/.cache/vite-plugin-image-optimizer",
       png: { quality: 80 },
       jpeg: { quality: 85 },
       webp: { lossless: false, quality: 60 },
@@ -42,6 +44,10 @@ export default defineConfig({
   },
   server: {
     historyApiFallback: true,
+  },
+  ssr: {
+    // CommonJS-only package; bundle it so the prerender step can import it
+    noExternal: ["react-helmet-async"],
   },
   resolve: {
     alias: {

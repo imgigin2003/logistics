@@ -30,7 +30,7 @@ export default function AboutSection() {
               </h2>
 
               <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                باربری نیلگون خلیج فارس (مؤسسه اصفهان سابق) از سال ۱۳۴۰ در استان
+                باربری نیلگون خلیج فارس (مؤسسه اصفهان سابق) از سال ۱۳۴۰ در استان{" "}
                 <strong>کرمانشاه</strong> در صدر نوآوری زنجیره تامین بوده و با
                 ترکیب فناوری پیشرفته و مسئولیت زیست‌محیطی، نتایج استثنایی ارائه
                 می‌دهد.
@@ -118,7 +118,11 @@ export default function AboutSection() {
                   src={`${
                     import.meta.env.BASE_URL
                   }assets/images/truck-medium.webp`}
-                  alt="کامیون حمل بار نیلگون خلیج فارس در پایانه کرمانشاه - خدمات حمل بار تجاری و صنعتی"
+                  alt="کامیون کشنده باری در سالن پایانه حمل بار - خدمات حمل بار تجاری و صنعتی"
+                  width={800}
+                  height={867}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </picture>

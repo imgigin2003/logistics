@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { createPageUrl } from "@/utils";
 import { Link, useLocation } from "react-router-dom";
 import { Phone, MapPin, Truck, Clock, Menu, X } from "lucide-react";
-import StructuredData from "@/components/home/StructuredData";
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
@@ -34,7 +33,6 @@ export default function Layout({ children, currentPageName }) {
 
   return (
     <div className="min-h-screen bg-white">
-      <StructuredData />
       {/* Navigation */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -212,6 +210,10 @@ export default function Layout({ children, currentPageName }) {
                 import.meta.env.BASE_URL
               }assets/images/footer-medium.webp`}
               alt="کشتی‌های باری در حال بارگیری کانتینرها در بندر"
+              width={800}
+              height={533}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover"
             />
           </picture>
@@ -252,7 +254,7 @@ export default function Layout({ children, currentPageName }) {
             </div>
 
             <div>
-              <h3 className="font-semibold text-xl mb-4">خدمات</h3>
+              <h2 className="font-semibold text-xl mb-4">خدمات</h2>
               <div className="space-y-2 text-emerald-200">
                 <p>حمل بار تجاری</p>
                 <p>حمل ماشین‌آلات</p>
@@ -262,7 +264,7 @@ export default function Layout({ children, currentPageName }) {
             </div>
 
             <div>
-              <h3 className="font-semibold text-xl mb-4">تماس</h3>
+              <h2 className="font-semibold text-xl mb-4">تماس</h2>
               <div className="space-y-2 text-emerald-200">
                 <div className="flex items-start gap-2">
                   <MapPin className="w-6 h-6" />
